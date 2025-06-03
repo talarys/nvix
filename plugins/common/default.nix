@@ -102,20 +102,35 @@ in
     with icons.diagnostics;
     # lua
     ''
-      vim.opt.whichwrap:append("<>[]hl")
-      vim.opt.listchars:append("space:·")
+            vim.opt.whichwrap:append("<>[]hl")
+            vim.opt.listchars:append("space:·")
 
-      -- below part set's the Diagnostic icons/colors
-      local signs = {
-        Hint = "${BoldHint}",
-        Info = "${BoldInformation}",
-        Warn = "${BoldWarning}",
-        Error = "${BoldError}",
-      }
+            -- below part set's the Diagnostic icons/colors
+            local signs = {
+              Hint = "${BoldHint}",
+              Info = "${BoldInformation}",
+              Warn = "${BoldWarning}",
+              Error = "${BoldError}",
+            }
 
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+            for type, icon in pairs(signs) do
+              local hl = "DiagnosticSign" .. type
+              vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+            end
+
+      if vim.fn.has("wsl") == 1 then
+        vim.g.clipboard = {
+          name = "win32yank-wsl",
+          copy = {
+            ["+"] = "win32yank.exe -i --crlf",
+            ["*"] = "win32yank.exe -i --crlf",
+          },
+          paste = {
+            ["+"] = "win32yank.exe -o --lf",
+            ["*"] = "win32yank.exe -o --lf",
+          },
+          cache_enabled = 0,
+        }
       end
     '';
 }
