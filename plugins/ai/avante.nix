@@ -1,7 +1,7 @@
 {
   plugins = {
     avante = {
-      enable = true;
+      enable = false;
       settings = {
         provider = "copilot";
         providers.copilot = {
