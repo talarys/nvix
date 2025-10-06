@@ -4,7 +4,7 @@
   plugins.conform-nvim = {
     enable = true;
     settings = {
-      default_format_opts.lsp_format = "prefer";
+      default_format_opts.lsp_format = "last";
       formatters_by_ft = {
         "_" = [
           "squeeze_blanks"
@@ -15,7 +15,7 @@
       formatters.squeeze_blanks.command = lib.getExe' pkgs.coreutils "cat";
       format_on_save = {
         timeout_ms = 500;
-        lsp_format = "fallback";
+        lsp_format = "last";
       };
     };
   };
