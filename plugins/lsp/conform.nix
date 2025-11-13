@@ -13,6 +13,10 @@
         ];
       };
       formatters.squeeze_blanks.command = lib.getExe' pkgs.coreutils "cat";
+      format_on_save = {
+        timeout_ms = 500;
+        lsp_format = "prefer";
+      };
     };
   };
 }
