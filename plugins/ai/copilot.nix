@@ -6,7 +6,7 @@ in
 {
   plugins = {
     chatgpt = {
-      enable = true;
+      enable = false;
       settings = {
         keymaps = {
           submit = "<C-Enter>";
