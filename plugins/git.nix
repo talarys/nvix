@@ -6,6 +6,33 @@ let
 in
 {
   plugins = {
+    diffview = {
+      enable = true;
+      settings = {
+        file_panel.win_config = {
+          position = "right";
+          width = 30;
+        };
+        keymaps = {
+          view = [
+            {
+              action = lib.nixvim.mkRaw "require('diffview.actions').toggle_files";
+              description = "Toggle the view of files panel";
+              key = "<leader>e";
+              mode = "n";
+            }
+          ];
+          file_panel = [
+            {
+              action = lib.nixvim.mkRaw "require('diffview.actions').toggle_files";
+              description = "Toggle the view of files panel";
+              key = "<leader>e";
+              mode = "n";
+            }
+          ];
+        };
+      };
+    };
     git-conflict = {
       enable = true;
       settings.default_mappings = true;
@@ -31,6 +58,11 @@ in
     (wKeyObj [
       "<leader>g"
       ""
+      "git"
+    ])
+    (wKeyObj [
+      "<leader>d"
+      ""
       "git"
     ])
     (wKeyObj [
@@ -116,10 +148,8 @@ in
       ''
     ) "Preview Selection")
 
-    (mkKeymap "n" "<leader>dg" "<cmd>lua require('gitsigns').diffthis()<CR>" "Git Diff ")
-    (mkKeymap "n" "<leader>dG" (mkRaw "function() require('gitsigns').diffthis('~') end")
-      "Git diff last commit (HEAD~)"
-    )
+    (mkKeymap "n" "<leader>gdd" "<cmd>DiffviewOpen<CR>" "Diffview")
+    (mkKeymap "n" "<leader>gdh" "<cmd>DiffviewFileHistory<CR>" "Diffview File History")
 
     # Blame
     (mkKeymap "n" "<leader>gk" (mkRaw "function() require('gitsigns').blame_line({ full = true }) end")
@@ -128,8 +158,9 @@ in
     (mkKeymap "n" "<leader>gK" ":lua require('gitsigns').blame()<CR>" "Blame File")
 
     # Quickfix
-    (mkKeymap "n" "<leader>gq" ":lua require('gitsigns').setqflist()<CR>" "Hunks to Quickfix")
-    (mkKeymap "n" "<leader>gQ" (mkRaw "function() require('gitsigns').setqflist('all') end")
+    (mkKeymap "n" "<leader>gC" ":GitConflictListQf<CR>" "All GitConflicts to Quickfix")
+    (mkKeymap "n" "<leader>ghH" ":lua require('gitsigns').setqflist()<CR>" "Buffer Hunk to Quickfix")
+    (mkKeymap "n" "<leader>ghh" (mkRaw "function() require('gitsigns').setqflist('all') end")
       "All Hunks to Quickfix"
     )
 
