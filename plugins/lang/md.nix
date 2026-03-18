@@ -9,6 +9,9 @@ let
 in
 {
   plugins = {
+    lsp.servers = {
+      marksman.enable = true;
+    };
     img-clip.enable = true;
     markdown-preview = {
       enable = true;
