@@ -35,7 +35,7 @@ in
             "scroll_documentation_down"
             "fallback"
           ];
-          "<C-space>" = [
+          "<Tab>" = [
             (
               # lua
               mkRaw ''
