@@ -71,9 +71,9 @@ let
             end
 
             if any_diff then
-              vim.cmd("windo diffoff")
+              vim.cmd("window diffoff")
             else
-              vim.cmd("windo diffthis")
+              vim.cmd("window diffthis")
             end
           end
         ''
