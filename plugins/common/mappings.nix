@@ -107,7 +107,7 @@ let
       ''
     ) "Close Window!")
 
-    (mkKeymap "n" "<leader><leader>" "<cmd>nohl<cr>" "no highlight!")
+    (mkKeymap "n" "<esc><esc>" "<cmd>nohl<cr>" "no highlight!")
     (mkKeymap "n" "<esc>" "<esc>:nohlsearch<cr>" "escape")
     (mkKeymap "n" "<leader>A" "ggVG" "select All")
 
