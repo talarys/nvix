@@ -66,6 +66,8 @@ in
         on_close = function(picker)
           picker.preview.win:close()
         end,
+        ignored = true,
+        hidden = true,
         layout = {
           preset = 'sidebar',
           layout = {
