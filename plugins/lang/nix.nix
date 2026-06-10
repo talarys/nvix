@@ -1,9 +1,10 @@
-{pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 {
   plugins = {
     lsp.servers = {
       nil_ls = {
         enable = true;
+        settings.nil.nix.flake.autoEvalInputs = true;
       };
       statix.enable = true;
     };
