@@ -4,14 +4,14 @@
     mini-ai.enable = true;
     treesitter = {
       enable = true;
+      highlight = {
+        enable = true;
+        disable = [
+          "latex"
+          "markdown"
+        ];
+      };
       settings = {
-        highlight = {
-          enable = true;
-          disable = [
-            "latex"
-            "markdown"
-          ];
-        };
         grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
         indent_enable = true;
         folding = true;
